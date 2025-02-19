@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="gopapa">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>gopapa</title>
+  <link rel="manifest" href="manifest.json">
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    var serviceWorkerVersion = "2014417683";
+  </script>
+
+  <!-- This script adds the Flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
+
+  <!-- ✅ Fullscreen & Image Handling JavaScript -->
+  <script>
+    window.enterFullscreen = function() {
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+      }
+    };
+
+    window.exitFullscreen = function() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    };
+
+    window.toggleFullscreen = function() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    };
+
+    window.setImageSource = function(url) {
+      let imgElement = document.getElementById("dynamic-image");
+      if (imgElement) {
+        imgElement.src = url;
+      }
+    };
+  </script>
+</head>
+<body>
+<!-- ✅ Image Element for Displaying User Input URL -->
+<img id="dynamic-image"
+     style="display: block; margin: auto; max-width: 80%; cursor: pointer;"
+     ondblclick="toggleFullscreen()" />
+
+<script>
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
